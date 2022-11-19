@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% import "bootstrap4/form.html" as wtf %}
+
+{% block navbar %}
+
+<nav class="navbar bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="{{ url_for('index') }}">DAT158 ML app</a>
+  
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <a href="{{ url_for('index') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+    </div> 
+  </nav><br>
+  
+{% endblock %}
+
+
+{% block content %}
+
+<div class='container'>
+    <p>Welcome to this very, very, very simple movie revenue predicition machine learning app.</p><br>
+</div>
+
+<div class='container'>
+    {{ wtf.render_form(form) }}
+</div>
+
+<div class='container'>
+
+    <h3>{% if session.get('pred') %} Movie revenue prediction: $ {{session.get('pred')['pred']}}
+        {% else %} {% endif %}
+    </h3>
+    
+
+</div>
+
+{% endblock %}
